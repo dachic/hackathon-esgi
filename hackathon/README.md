@@ -33,18 +33,14 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* Symfony 4 - The web framework used
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://github.com/dachic/hackathon-esgi) for details on our code of conduct, and the process for submitting pull requests to us.
+* Symfony 4 -
 
 ## Versioning
 
 
 ## Authors
-Delphine
-Océane
-Lea
-Driss
+Delphine,
+Océane,
+Lea,
+Driss,
 Adam
