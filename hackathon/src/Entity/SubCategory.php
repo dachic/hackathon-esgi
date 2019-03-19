@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SubCategoryRepository")
  */
@@ -29,14 +30,8 @@ class SubCategory
      */
     private $category;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Keywords", mappedBy="parent")
-     */
-    private $children;
-
     public function __construct()
     {
-        $this->children = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -64,24 +59,6 @@ class SubCategory
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Keywords[]
-     */
-    public function getChildren(): Collection
-    {
-        return $this->children;
-    }
-
-    public function addChild(Keywords $child): self
-    {
-        if (!$this->children->contains($child)) {
-            $this->children[] = $child;
-            $child->setParent($this);
-        }
 
         return $this;
     }
