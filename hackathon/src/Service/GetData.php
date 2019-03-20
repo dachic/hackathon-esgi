@@ -9,13 +9,13 @@ class GetData
      * @param array $words
      * @return array
     */
-    public function get(string $words) 
+    public function get(string $words, string $dates) 
     {
         $curl = curl_init();
         
-        $url = "https://api.ozae.com/gnw/articles?date=20130601__20140601&key=f4a5f6832e204f4db1e3977465df9db2&edition=fr-fr&query=%s&hard_limit=400";
+        $url = "https://api.ozae.com/gnw/articles?date=%s&key=f4a5f6832e204f4db1e3977465df9db2&edition=fr-fr&query=%s&hard_limit=400";
 
-        $url = sprintf($url, $words);
+        $url = sprintf($url, $dates, $words);
 
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);

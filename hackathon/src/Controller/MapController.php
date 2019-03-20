@@ -16,8 +16,16 @@ class MapController extends AbstractController
     */
     public function index(GetData $data): Response
     {
-        $test = $data->get("pollution déchets");
+        $test = $data->get("20130601__20140601","pollution déchets");
         dd($test);
         // return $this->render('index.html.twig');
+    }
+
+    /**
+     * @Route("/show", name="show")
+    */
+    public function show()
+    {
+        return $this->render('index.html.twig');
     }
 }

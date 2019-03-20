@@ -9,7 +9,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class AppFixtures extends Fixture
 {
-    public const CATEGORIES = ["EAU", "AIR", "TERRE"];
+    public const CATEGORIES = ["EAU", "AIR", "SOL"];
 
     public function load(ObjectManager $manager)
     {
@@ -21,37 +21,54 @@ class AppFixtures extends Fixture
             array_push($cats, $cat);
         }
 
-        $subCategoriesLibelles = 
+        $EauSubCategories = 
         [
-            0 => ['déchets', 'pétrole', 'chimique'],
-            1 => ['usines', 'transports', 'habitations'],
-            2 => ['déforestation','organique','pesticide']
+            "fr" => ['déchets', 'pétrole', 'chimique', 'toxique', 'nucléaire', 'plastique', 'pêche'],
+            "en" => ['garbage', 'petrol', 'chemical', 'toxic', 'nuclear', 'plastic', 'fishing']
         ];
 
-
-        foreach($cats as $x => $category)
+        foreach($EauSubCategories["fr"] as $key => $val)
         {
-            foreach($subCategoriesLibelles as $y => $value)
-            {
-                if($x == $y){
-                    $subcat = new SubCategory();
-                    $subcat->setLibelle($value[0]);
-                    $subcat->setCategory($category);
-                    $manager->persist($subcat);
-
-                    $subcat = new SubCategory();
-                    $subcat->setLibelle($value[1]);
-                    $subcat->setCategory($category);
-                    $manager->persist($subcat);
-
-                    $subcat = new SubCategory();
-                    $subcat->setLibelle($value[2]);
-                    $subcat->setCategory($category);
-                    $manager->persist($subcat);
-                }
-            
-            }
+            $subcat = new SubCategory();
+            $subcat->setLibelle_fr($val);
+            $subcat->setLibelle_en($EauSubCategories["en"][$key]);
+            $subcat->setCategory($cats[0]);
+            $manager->persist($subcat);
         }
+        
+
+        $AirSubCategories = 
+        [
+            "fr" => ['CO2', 'atmosphère', 'ozone', 'carbone', 'charbon', 'gaz'],
+            "en" => ['CO2', 'atmosphere', 'ozone', 'carbon', 'charcoal', 'gaz']
+        ];
+
+        foreach($AirSubCategories["fr"] as $key => $val)
+        {
+            $subcat = new SubCategory();
+            $subcat->setLibelle_fr($val);
+            $subcat->setLibelle_en($AirSubCategories["en"][$key]);
+            $subcat->setCategory($cats[1]);
+            $manager->persist($subcat);
+        }
+
+        $manager->flush();
+        
+        $SolSubCategories = 
+        [
+            "fr" => ['déchets', 'déforestation', 'charbon', 'nucléaire', 'plastique', 'chasse', 'recyclage','sécheresse'],
+            "en" => ['garbage', 'deforestation', 'charcoal', 'nuclear', 'plastic', 'hunting', 'recycling', 'dryness']
+        ];
+
+        foreach($SolSubCategories["fr"] as $key => $val)
+        {
+            $subcat = new SubCategory();
+            $subcat->setLibelle_fr($val);
+            $subcat->setLibelle_en($SolSubCategories["en"][$key]);
+            $subcat->setCategory($cats[2]);
+            $manager->persist($subcat);
+        }
+
         $manager->flush();
     }
 }
