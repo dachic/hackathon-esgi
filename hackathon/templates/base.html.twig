@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        Driss [4:01 PM]
         {% block stylesheets %}
            {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -11,6 +10,7 @@
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </body>

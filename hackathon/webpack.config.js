@@ -39,6 +39,7 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
+    .enableVueLoader()
 ;
 
 let config = Encore.getWebpackConfig();
