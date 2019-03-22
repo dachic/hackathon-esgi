@@ -1,4 +1,7 @@
+
+$( document).ready(function() {
 const axios = require('axios');
+
 $('.dot:nth-child(1)').click(function(){
 $('.inside').animate({
     'width' : '10%'
@@ -25,25 +28,26 @@ $('.dot:nth-child(5)').click(function(){
     }, 500);
 });
 
-$('.dot').click(function(e)
-{
-    $("#timeline").children().removeClass("color-circle");
-    let date = $(this).children().eq(1).html();
-    sessionStorage.setItem("date", date);
-    getData();
-    $(this).addClass("color-circle");
-});
+
 
 $(document).on("click", ".cat-img", function(e) 
-{   $("#timeline").children().css('opacity', '0.5');
+{   $("#categories").children().css('opacity', '0.5');
     sessionStorage.setItem("cat_id", e.currentTarget.id);
     getData();
     $(this).css('opacity', '1');
 });
 
-$( document ).ready(function() {
-    result = getData();
-    
+
+    getData();
+
+    $(document).on("click", ".dot", function(e) 
+    {
+        $("#timeline").children().removeClass("color-circle");
+        let date = $(this).children().eq(1).html();
+        sessionStorage.setItem("date", date);
+        getData();
+        $(this).addClass("color-circle");
+    });
     results = {};
     function getData()
     {
@@ -54,18 +58,21 @@ $( document ).ready(function() {
         else 
         {
             cat = "17";
+            $("#17").css('opacity', '1');
         }
         if(sessionStorage.getItem("date"))
         {
             date = sessionStorage.getItem("date");
         } 
-        else {
+        else 
+        {
             date = 2018;
+            $("#five").addClass("color-circle");
         }
         number = parseInt(date) ;
         annee2 = number + 1 ;
-        date2 = annee2 + "0101";
-        date = date + "0101_" + date2 ;
+        date2 = annee2 + "0601";
+        date = date + "0601__" + date2 ;
 
         results = {};
         // Get data from controller
@@ -79,18 +86,18 @@ $( document ).ready(function() {
         })
         .then(function () {
         // always executed
-        
         }); 
         return results;  
     }
-
 });
 
+
+
 function loadMap(articles)
-{console.log(articles);
+{
     google.charts.load('current', {
         'packages': ['geochart'],
-        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+        'mapsApiKey': 'AIzaSyDCmeqvnxbBagNwq-IFCkKq42udQYxxXns'
     });
     google.charts.setOnLoadCallback(drawRegionsMap);
     
@@ -100,9 +107,9 @@ function loadMap(articles)
         for (var i in articles) {
             table.push([i,articles[i].score]);
         };
-        console.log(table);
+        
         var data = google.visualization.arrayToDataTable(table);
-    
+        
         var options = {
             region: '150',
             colorAxis: {colors: ['#4c5e57', '#4d7565', '#628450' , '#8e7b30', '#9b6e2b', "#7c5213"]},

@@ -15,23 +15,23 @@
         <div id="timeline">
             <div class="dot" id="one">
                 <span></span>
-                <date>2014</date>
+                <date id="2014">2014</date>
             </div>
             <div class="dot" id="two">
                 <span></span>
-                <date>2015</date>
+                <date id="2015">2015</date>
             </div>
             <div class="dot" id="three">
                 <span></span>
-                <date>2016</date>
+                <date id="2016">2016</date>
             </div>
             <div class="dot" id="four">
                 <span></span>
-                <date>2017</date>
+                <date id="2017">2017</date>
             </div>
             <div class="dot" id="five">
                 <span></span>
-                <date>2018</date>
+                <date id="2018">2018</date>
             </div>
             <div class="inside"></div>
         </div>
