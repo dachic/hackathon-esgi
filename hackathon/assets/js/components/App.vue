@@ -1,38 +1,35 @@
 <template>
     <div id="app">
         <!-- {{message}} -->
-        <div id="categories">
-            <div id="categorie_1" style="background-color:gray;">
-                <img id="17" class="cat-img" src="../../images/air.png" alt="icon_air">
-            </div>
-            <div id="categorie_2" style="background-color:gray;">
-                <img id="16" class="cat-img" src="../../images/eau.png" alt="icon_eau">
-            </div>
-            <div id="categorie_3" style="background-color:gray;">
-                <img id="18" class="cat-img" src="../../images/terre.png" alt="icon_sol">
-            </div>
+        <div class="header">
+            <img id="logo" src="../../images/logoZaoblanc-03.svg">
         </div>
-       <div id="regions_div">
-       </div>
-
+        <div id="categories" class="d-flex">
+            <img id="17" class="cat-img" src="../../images/air.png" alt="icon_air">
+            <img id="16" class="cat-img" src="../../images/eau.png" alt="icon_eau">
+            <img id="18" class="cat-img" src="../../images/SOL_cercle.png" alt="icon_sol">
+        </div>
+        <div id="app" class="embed-responsive embed-responsive-16by9">
+            <div id="regions_div" class="embed-responsive-item"></div>
+        </div>
         <div id="timeline">
-            <div class="dot 2014" id="one">
+            <div class="dot" id="one">
                 <span></span>
                 <date>2014</date>
             </div>
-            <div class="dot 2015" id="two">
+            <div class="dot" id="two">
                 <span></span>
                 <date>2015</date>
             </div>
-            <div class="dot 2016" id="three">
+            <div class="dot" id="three">
                 <span></span>
                 <date>2016</date>
             </div>
-            <div class="dot 2017" id="four">
+            <div class="dot" id="four">
                 <span></span>
                 <date>2017</date>
             </div>
-            <div class="dot 2018" id="five">
+            <div class="dot" id="five">
                 <span></span>
                 <date>2018</date>
             </div>

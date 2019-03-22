@@ -41,7 +41,7 @@ class Run extends ContainerAwareCommand
         $cache = new FilesystemCache();
         if (!$cache->has('articles'.$input->getArgument('category'))) 
         {
-            $cache->set('articles'.$input->getArgument('category'), $results, 3600);
+            $cache->set('articles'.$input->getArgument('category'), $results, 86400);
         }
         
         $output->writeln([

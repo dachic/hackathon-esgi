@@ -44,7 +44,7 @@ class MapController extends AbstractController
         //Avoid 504 Requestion Timeout error 
         set_time_limit(0);
         $cache = new FilesystemCache();
-        // $cache->clear();
+        $cache->clear();
         //if there are no files in cache rerun the command to launch service
         if (!$cache->has('articles'.$id))
         {
@@ -78,7 +78,7 @@ class MapController extends AbstractController
         {
             
             //Remove empty articles
-            if($cat["metadata"]["count"] == 0)
+            if(isset($cat["metadata"]["count"]) && $cat["metadata"]["count"] == 0)
             {
                 unset($results[$key]);
             }

@@ -41,15 +41,15 @@ body {
 }
 div#timeline {
     z-index: 90;
-    top: -100px;
+    top: -130px;
     background-color: lighten($blue,20%);
     height: 5px;
     width: 100%;
     position: relative;
     .inside {
         position: absolute;
-        height: 2px;
-        background-color: #222;
+        height: 3px;
+        background-color: $blue;
         width: 0%;
         top: 1.5px;
         left: 0;
@@ -164,4 +164,9 @@ div.mask {
       line-height: 130%;
     }
   }
+}
+
+.color-circle 
+{
+    background-color: $blue !important;
 }

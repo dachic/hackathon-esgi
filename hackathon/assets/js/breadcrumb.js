@@ -27,9 +27,11 @@ $('.dot:nth-child(5)').click(function(){
 
 $('.dot').click(function(e)
 {
+    $("#timeline").children().removeClass("color-circle");
     let date = $(this).children().eq(1).html();
     sessionStorage.setItem("date", date);
     getData();
+    $(this).addClass("color-circle");
 });
 
 $(document).on("click", ".cat-img", function(e) 
@@ -64,8 +66,7 @@ function getData()
     // Get data from controller
     axios.get('https://localhost/articles/year/{PERIOD}/category/{CATEGORY}'.replace('{PERIOD}', date).replace('{CATEGORY}', cat))
     .then(function (response) {
-        // console.log(JSON.parse(response.data));
-        console.log(response);
+        console.log(response.data);
     })
     .catch(function (error) {
         console.log(error);
@@ -74,4 +75,13 @@ function getData()
     // always executed
     }); 
         
+}
+
+$( document ).ready(function() {
+    if(sessionStorage.getItem("cat_id"))
+    {
+        var cat = sessionStorage.getItem("cat_id");
     }
+    else
+        cat = "17";
+});
