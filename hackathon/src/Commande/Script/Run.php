@@ -39,9 +39,9 @@ class Run extends ContainerAwareCommand
         
         //put in cache the results
         $cache = new FilesystemCache();
-        if (!$cache->has('articles'.$input->getArgument('category'))) 
+        if (!$cache->has('articles'.$input->getArgument('category').$input->getArgument('date'))) 
         {
-            $cache->set('articles'.$input->getArgument('category'), $results, 86400);
+            $cache->set('articles'.$input->getArgument('category').$input->getArgument('date'), $results, 86400);
         }
         
         $output->writeln([

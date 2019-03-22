@@ -44,9 +44,9 @@ class MapController extends AbstractController
         //Avoid 504 Requestion Timeout error 
         set_time_limit(0);
         $cache = new FilesystemCache();
-        $cache->clear();
+        // $cache->clear();
         //if there are no files in cache rerun the command to launch service
-        if (!$cache->has('articles'.$id))
+        if (!$cache->has('articles'.$id.$date))
         {
             $application = new Application($kernel);
             $application->setAutoExit(false);
@@ -62,13 +62,120 @@ class MapController extends AbstractController
 
         }
 
-        $articles = $cache->get('articles'.$id);
-        $articles = self::filterById($articles);
-        $articlesByCountry = self::filterByCountry($articles);
-        $articlesCount = self::countByCountry($articlesByCountry);
+        // $articles = $cache->get('articles'.$id.$date);
+        // $articles = self::filterById($articles);
+        // $articlesByCountry = self::filterByCountry($articles);
+        // $articlesCount = self::countByCountry($articlesByCountry);
 
-        return new JsonResponse($articles);
-        
+        // return new JsonResponse($articles);
+        return new JsonResponse(
+        [ 
+            "Austria" => [
+              "score" => 2,
+              "articles" => [
+                0 => [
+                  "id" => 131083403,
+                  "name" => "5 choses à savoir sur l'Autriche, qui prend la présidence de l'Union européenne",
+                  "url" => "https://www.nouvelobs.com/monde/20180630.OBS8978/5-choses-a-savoir-sur-l-autriche-qui-prend-la-presidence-de-l-union-europeenne.html",
+                  "edition" => "fr-fr",
+                  "source" => "",
+                  "topics" => 2,
+                  "date_first_seen" => "2018-07-01T06:06:57Z",
+                  "date_last_seen" => "2018-07-02T13:54:01Z",
+                  "show_interval" => "06:03",
+                  "article_score" => 20320,
+                  "social_score" => 1648,
+                  "social_speed_sph" => 0,
+                  "img_uri" => "https://media.nouvelobs.com/referentiel/1200x630/16363964.jpg",
+                  "sph_on_period" => 0
+                ],
+                1 => [
+                  "id" => 131594485,
+                  "name" => "En Autriche, le président iranien plaide pour la sauvegarde de l'accord nucléaire sur Orange Finance",
+                  "url" => "https://finance.orange.fr/actualite-eco/article/en-autriche-le-president-iranien-plaide-pour-la-sauvegarde-de-l-accord-nucleaire-CNT0000014DFmw.html",
+                  "edition" => "fr-fr",
+                  "source" => 2 ,
+                  "topics" => 2, 
+                  "date_first_seen" => "2018-07-04T18:54:59Z",
+                  "date_last_seen" => "2018-07-06T03:54:02Z",
+                  "show_interval" => "04:20",
+                  "article_score" => 410,
+                  "social_score" => 0,
+                  "social_speed_sph" => -1,
+                  "img_uri" => "http://media1.woopic.com/api/v1/images/493%2Fafp-news%2Ff9e%2Ff51%2F457336473520e1057d548cde41%2Fen-autriche-le-president-iranien-plaide-pour-la-sauvegarde-de-l",
+                  "sph_on_period" => 0
+                ]
+              ]
+            ],
+            "France" => [
+              "score" => 4,
+              "articles" => [
+                0 => [
+                  "id" => 126833816,
+                  "name" => "Aisne : un propriétaire déverse les déchets de ses anciens locataires devant leur nouveau logement - France 3 Hauts-de-France",
+                  "url" => "https://france3-regions.francetvinfo.fr/hauts-de-france/aisne/aisne-proprietaire-deverse-dechets-ses-anciens-locataires-devant-leur-nouveau-logement-1489775.htm",
+                  "edition" => "fr-fr",
+                  "source" => 2,
+                  "topics" => 2, 
+                  "date_first_seen" => "2018-06-06T19:28:08Z",
+                  "date_last_seen" => "2018-06-10T07:15:01Z",
+                  "show_interval" => "06:38",
+                  "article_score" => 126739,
+                  "social_score" => 72948,
+                  "social_speed_sph" => 5,
+                  "img_uri" => "https://france3-regions.francetvinfo.fr/hauts-de-france/sites/regions_france3/files/styles/top_big/public/assets/images/2018/06/06/sans_titre-1_17-3696639.jpg?i",
+                  "sph_on_period" => 0
+                ],
+                1 => [
+                  "id" => 144764688,
+                  "name" => "France/Monde | Attention : rappel de haricots verts Leclerc à cause d'une plante toxique",
+                  "url" => "https://www.ledauphine.com/france-monde/2019/03/08/attention-rappel-de-haricots-verts-leclerc-a-cause-d-une-plante-toxique",
+                  "edition" => "fr-fr",
+                  "source" => 2, 
+                  "topics" => 2, 
+                  "date_first_seen" => "2019-03-08T17:25:56Z",
+                  "date_last_seen" => "2019-03-09T22:31:00Z",
+                  "show_interval" => "05:45",
+                  "article_score" => 37066,
+                  "social_score" => 43817,
+                  "social_speed_sph" => 4,
+                  "img_uri" => "https://cdn-s-www.ledauphine.com/images/328704FA-9DBA-4383-9D0E-95B83789616B/FB1200/photo-1552059949.jpg",
+                  "sph_on_period" => 0
+                ],
+                2 => [
+                  "id" => 134545547,
+                  "name" => "Coquille Saint-Jacques : les pêcheurs normands et anglais s'affrontent en mer ! - France 3 Normandie",
+                  "url" => "https://france3-regions.francetvinfo.fr/normandie/calvados/coquille-saint-jacques-pecheurs-normands-anglais-s-affrontent-mer-1531692.html",
+                  "edition" => "fr-fr",
+                  "source" => 2,
+                  "topics" => 2, 
+                  "date_first_seen" => "2018-08-28T11:49:08Z",
+                  "date_last_seen" => "2018-08-29T17:15:01Z",
+                  "show_interval" => "22:12",
+                  "article_score" => 291392,
+                  "social_score" => 23657,
+                  "social_speed_sph" => 0,
+                  "img_uri" => "https://france3-regions.francetvinfo.fr/normandie/sites/regions_france3/files/styles/top_big/public/assets/images/2018/08/28/bateau_2_1-3816788.jpg?itok=NWJH0T7 ",
+                  "sph_on_period" => 0
+                ],
+                3 => [
+                  "id" => 135217581,
+                  "name" => "Antibes : le comédien Samuel Le Bihan présente Chrysalis, un prototype qui transforme le plastique en carburant - France 3 Provence-Alpes-Côte d'Azur",
+                  "url" => "https://france3-regions.francetvinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/antibes/antibes-comedien-samuel-bihan-presente-chrysalis-prototype-qui-transf ",
+                  "edition" => "fr-fr",
+                  "source" => 2,
+                  "topics" => 2, 
+                  "date_first_seen" => "2018-09-10T20:39:44Z",
+                  "date_last_seen" => "2018-09-11T02:36:01Z",
+                  "show_interval" => "04:03",
+                  "article_score" => 283,
+                  "social_score" => 9554,
+                  "social_speed_sph" => 0,
+                  "img_uri" => "https://france3-regions.francetvinfo.fr/provence-alpes-cote-d-azur/sites/regions_france3/files/styles/top_big/public/assets/images/2018/09/10/off_earthwake_solu ",
+                  "sph_on_period" => 0
+                ]
+              ]
+          ]]);
     }
 
     protected function filterById(array $results)
