@@ -38,6 +38,7 @@ $(document).on("click", ".cat-img", function(e)
 { 
     sessionStorage.setItem("cat_id", e.currentTarget.id);
     getData();
+    $(this).css('opacity', '1');
 });
 
 function getData()
